@@ -14,7 +14,7 @@ function sumValues(num1, num2, add) {
         return result;
     }
     else {
-        return !add;
+        return add;
     }
 }
 
@@ -25,6 +25,15 @@ function sumValues(num1, num2, add) {
  * @returns An array of each price's new price, after the discount is applied. Or false, if prices array is empty.
  */
 function discountPrices(prices, discount) {
+    if (prices.length === 0) {
+        return false;
+    }
+
+    // check the types
+    if(typeof discount !== 'number' || !Array.isArray(prices)) {
+        return false;
+    }
+
     let discounted = []
     const length = prices.length;
     let discountedPrice = 0
@@ -37,6 +46,3 @@ function discountPrices(prices, discount) {
 }
 
 module.exports = {sumValues, discountPrices};
-console.log(sumValues(5, 10, 32));
-console.log(sumValues(5, 10, false));
-console.log(discountPrices([100, 200, 300], 0.2));
